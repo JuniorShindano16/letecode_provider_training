@@ -14,10 +14,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Product> products = [
-    Product(id: "1", name: "Bag", coverImg: "", price: 100, quantity: 0),
-    Product(id: "2", name: "shoes", coverImg: "", price: 200, quantity: 0),
-    Product(id: "3", name: "sweat", coverImg: "", price: 300, quantity: 0),
+  List<Product> products = [
+    Product(id: "1", name: "Bag", coverImg: "", price: 100),
+    Product(id: "2", name: "shoes", coverImg: "", price: 200),
+    Product(id: "3", name: "sweat", coverImg: "", price: 300),
   ];
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text("Welcome"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {
+            setState(() {
+              products = [];
+            });
+          }, icon: Icon(Icons.search)),
           Stack(
             children: [
               IconButton(

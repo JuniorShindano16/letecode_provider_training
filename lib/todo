@@ -1,0 +1,14 @@
+- TODO app ( Provider, Riverpod )
+-
+Gestion des tâches
+
+- ajouter
+- supprimer
+- terminer
+
+- Categoriser une tache
+
+
+- Filtre ( category, terminer/ou pas)
+
+- Cunsumer
