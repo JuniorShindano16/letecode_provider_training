@@ -1,8 +1,8 @@
 import 'package:provider_training/models/product_model.dart';
 
-class Basket {
-  String id;
-  List <Product> products;
-  Basket({required this.id, required this.products});
+class BasketModel {
+  Product product;
+  int quantity;
 
+  BasketModel({required this.product, required this.quantity});
 }

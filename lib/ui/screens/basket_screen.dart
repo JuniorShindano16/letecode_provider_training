@@ -9,7 +9,7 @@ class BasketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final basket = Provider.of<BasketProvider>(context);
+    final basketProvider = Provider.of<BasketProvider>(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +29,7 @@ class BasketScreen extends StatelessWidget {
                     shape: BoxShape.circle,
                     color: Colors.red,
                   ),
-                  child: Text(basket.products.length.toString(), style: TextStyle(color: Colors.white)),
+                  child: Text(basketProvider.basketItems.length.toString(), style: TextStyle(color: Colors.white)),
                 ),
               ),
             ],
@@ -41,14 +41,14 @@ class BasketScreen extends StatelessWidget {
           slivers: [
             SliverList(
               delegate: SliverChildBuilderDelegate((context, index) {
-                final product = basket.products[index];
-                return ProductBasketWidget(product:  product);
-              }, childCount: basket.products.length),
+                final basket = basketProvider.basketItems[index];
+                return ProductBasketWidget(basketModel:  basket);
+              }, childCount: basketProvider.basketItems.length),
             ),
             SliverToBoxAdapter(
               child: Container(
                 padding: EdgeInsets.all(16),
-                child:  Text("Total: ${basket.getTotalPrice}"),
+                child:  Text("Total: ${basketProvider.getTotalPrice}"),
 
               )
             )

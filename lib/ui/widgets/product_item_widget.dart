@@ -20,12 +20,12 @@ class ProductItemWidget extends StatelessWidget {
         width: 48,
         child: IconButton(
           onPressed: () {
-            if(!basketProvider.products.contains(product)) {
+            final item = basketProvider.getItem(product);
+            if(item == null) {
               basketProvider.addProduct(product);
             } else {
-              basketProvider.increaseQuantity(product);
+              basketProvider.increaseQuantity(item);
             }
-
           },
           icon: Icon(Icons.add_shopping_cart),
         ),

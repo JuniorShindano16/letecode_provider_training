@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider_training/models/basket_model.dart';
 
 import '../../models/product_model.dart';
 import '../../provider/basket_provider.dart';
 
 class ProductBasketWidget extends StatelessWidget {
-  final Product product;
+  final BasketModel basketModel;
 
-  const ProductBasketWidget({super.key, required this.product});
+  const ProductBasketWidget({super.key, required this.basketModel});
 
   @override
   Widget build(BuildContext context) {
     final basket = Provider.of<BasketProvider>(context);
+
     return ListTile(
-      leading: CircleAvatar(child: Text(product.name[0])),
+      leading: CircleAvatar(child: Text(basketModel.product.name[0])),
       title: Row(spacing: 5,
         children: [
-          Text(product.name),  IconButton(
+          Text(basketModel.product.name),  IconButton(
             onPressed: () {
-              basket.removeProduct(product);
+              basket.removeProduct(basketModel.product);
             },
             icon: Icon(Icons.delete),
           ),
         ],
 
       ),
-      subtitle: Text(product.price.toString()),
+      subtitle: Text(basketModel.product.price.toString()),
       trailing: SizedBox(
         width: 120,
 
@@ -38,21 +40,19 @@ class ProductBasketWidget extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    basket.decreaseQuantity(product);
+                    basket.decreaseQuantity(basketModel);
                   },
                   icon: const Icon(Icons.remove),
                 ),
-                Text(product.quantity.toString()),
+                Text(basketModel.quantity.toString()),
                 IconButton(
                   onPressed: () {
-                    basket.increaseQuantity(product);
+                    basket.increaseQuantity(basketModel);
                   },
                   icon: const Icon(Icons.add),
                 ),
               ],
             ),
-
-
           ],
         ),
       ),

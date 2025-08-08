@@ -22,7 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
-final basket = Provider.of<BasketProvider>(context);
+    final basket = Provider.of<BasketProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Welcome"),
@@ -49,7 +50,7 @@ final basket = Provider.of<BasketProvider>(context);
                     shape: BoxShape.circle,
                     color: Colors.red,
                   ),
-                  child: Text(basket.products.length.toString(), style: TextStyle(color: Colors.white)),
+                  child: Text(basket.basketItems.length.toString(), style: TextStyle(color: Colors.white)),
                 ),
               ),
             ],
